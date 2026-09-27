@@ -31,11 +31,9 @@ class _RadioScreenState extends State<RadioScreen> {
     final currentList = _selectedTab == 0 ? _radioStations : _recitersList;
 
     return BgWrapper(
-      // خلفية شاشة الراديو المخصصة
       backgroundImage: 'assets/images/silhouette-woman-reading-quran.png',
       child: Column(
         children: [
-          // زر التبديل بين Radio و Reciters
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Container(
@@ -91,7 +89,6 @@ class _RadioScreenState extends State<RadioScreen> {
             ),
           ),
 
-          // قائمة الكروت
           Expanded(
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
@@ -99,7 +96,7 @@ class _RadioScreenState extends State<RadioScreen> {
               itemCount: currentList.length,
               separatorBuilder: (_, __) => const SizedBox(height: 14),
               itemBuilder: (context, index) {
-                final isWaveform = index == 1; // الكارت الثاني يحتوي على خطوط الموجات الصوتية
+                final isWaveform = index == 1; 
                 return Container(
                   height: 135,
                   decoration: BoxDecoration(
@@ -110,7 +107,6 @@ class _RadioScreenState extends State<RadioScreen> {
                     borderRadius: BorderRadius.circular(22),
                     child: Stack(
                       children: [
-                        // زخرفة المساجد في أسفل كل كارت
                         Positioned(
                           bottom: 0,
                           left: 0,

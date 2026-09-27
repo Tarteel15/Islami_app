@@ -33,7 +33,6 @@ class HadethDetailsScreen extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // المساجد أسفل شاشة الديتيلز
             Positioned(
               left: 0,
               right: 0,
@@ -45,12 +44,10 @@ class HadethDetailsScreen extends StatelessWidget {
               ),
             ),
 
-            // محتوى تفاصيل الحديث
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
               child: Column(
                 children: [
-                  // الـ Corners حول عنوان الحديث
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -82,7 +79,6 @@ class HadethDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // نص الحديث كامل باللون الذهبي وقابل للـ Scroll
                   Expanded(
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
@@ -93,7 +89,7 @@ class HadethDetailsScreen extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         style: const TextStyle(
                           fontFamily: 'Janna',
-                          color: AppColors.gold, // لون الحديث دهبي حسب المطلوب
+                          color: AppColors.gold, 
                           fontSize: 18,
                           height: 2.1,
                           fontWeight: FontWeight.w600,

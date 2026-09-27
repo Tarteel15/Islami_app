@@ -26,10 +26,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 
-  // الخمس صفحات كاملة
   final List<OnboardingItem> _pages = const [
     OnboardingItem(
-      image: 'assets/images/welcome.png', // أول صفحة تم تغييرها لـ welcome.png
+      image: 'assets/images/welcome.png', 
       title: 'Welcome To Islami',
       desc: '',
     ),
@@ -75,7 +74,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // الخلفية الداكنة المتدرجة
           Container(
             decoration: const BoxDecoration(
               gradient: AppColors.mainBackgroundGradient,
@@ -88,7 +86,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 const SizedBox(height: 10),
 
-                // هيدر المسجد وكلمة Islami بنفس تصميم باقي شاشات التطبيق
                 SizedBox(
                   height: 120,
                   width: double.infinity,
@@ -120,7 +117,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                 const SizedBox(height: 12),
 
-                // عرض الـ 5 صفحات
                 Expanded(
                   child: PageView.builder(
                     controller: _pageController,
@@ -137,7 +133,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // صورة الصفحة
                             Expanded(
                               flex: 5,
                               child: Center(
@@ -153,9 +148,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                             ),
 
-                            const SizedBox(height: 28), // مسافة مناسبة لإنزال النص
+                            const SizedBox(height: 28), 
 
-                            // عنوان الصفحة باللون الذهبي
                             Text(
                               item.title,
                               textAlign: TextAlign.center,
@@ -169,7 +163,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                             const SizedBox(height: 12),
 
-                            // وصف الصفحة باللون الذهبي المطابق للعنوان
                             Text(
                               item.desc,
                               textAlign: TextAlign.center,
@@ -190,13 +183,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
 
-                // أزرار التنقل ومؤشر الـ 5 صفحات
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // زر Back
                       _currentIndex > 0
                           ? TextButton(
                               onPressed: () {
@@ -217,7 +208,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             )
                           : const SizedBox(width: 60),
 
-                      // مؤشر النقاط لـ 5 صفحات
                       SmoothPageIndicator(
                         controller: _pageController,
                         count: _pages.length,
@@ -230,7 +220,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                       ),
 
-                      // زر Next أو Finish
                       TextButton(
                         onPressed: () {
                           if (_currentIndex < _pages.length - 1) {

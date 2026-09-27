@@ -25,7 +25,6 @@ class _SebhaScreenState extends State<SebhaScreen> {
   void _onSebhaTap() {
     setState(() {
       _counter++;
-      // إضافة زاوية خطوة واحدة لتكتمل 360 درجة (2 * pi) في 30 عدة
       _angle += (2 * math.pi) / 30;
 
       if (_counter == 30) {
@@ -42,7 +41,6 @@ class _SebhaScreenState extends State<SebhaScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // 1. صورة الخلفية sebhabg.png تملأ الشاشة بالكامل
           Image.asset(
             'assets/images/sebhabg.png',
             width: double.infinity,
@@ -56,17 +54,13 @@ class _SebhaScreenState extends State<SebhaScreen> {
           ),
 
           // 2. طبقة تعتيم خفيفة
-          Container(
-            color: Colors.black.withOpacity(0.35),
-          ),
+          Container(color: Colors.black.withOpacity(0.35)),
 
-          // 3. المحتوى بالكامل داخل SafeArea لضبط المسافات من أعلى الشاشة
           SafeArea(
             child: Column(
               children: [
                 const SizedBox(height: 14),
 
-                // هيدر المسجد وكلمة Islami مظبوطين فوق بعض بالملي
                 SizedBox(
                   height: 140,
                   width: double.infinity,
@@ -83,7 +77,6 @@ class _SebhaScreenState extends State<SebhaScreen> {
                           errorBuilder: (_, __, ___) => const SizedBox(),
                         ),
                       ),
-                      // كلمة Islami متمركزة فوق قاعدة قبة المسجد بالضبط
                       Positioned(
                         bottom: 12,
                         child: Image.asset(
@@ -97,10 +90,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
                   ),
                 ),
 
-                // مسافة مريحة لإنزال جملة سبح اسم ربك الأعلى
                 const SizedBox(height: 24),
 
-                // نص "سَبِّحِ اسْمَ رَبِّكَ الأَعْلَى" في مكانه المظبوط
                 const Text(
                   'سَبِّحِ اسْمَ رَبِّكَ الأَعْلَى',
                   style: TextStyle(
@@ -113,7 +104,6 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
                 const Spacer(),
 
-                // مجسم السبحة بالكامل
                 GestureDetector(
                   onTap: _onSebhaTap,
                   child: SizedBox(
@@ -122,7 +112,6 @@ class _SebhaScreenState extends State<SebhaScreen> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        // الرأس والجسم يدوران معاً في نفس الـ AnimatedRotation
                         AnimatedRotation(
                           turns: _angle / (2 * math.pi),
                           duration: const Duration(milliseconds: 230),
@@ -133,17 +122,16 @@ class _SebhaScreenState extends State<SebhaScreen> {
                             child: Stack(
                               alignment: Alignment.topCenter,
                               children: [
-                                // رأس السبحة
                                 Positioned(
                                   top: 0,
                                   child: Image.asset(
                                     'assets/images/head.png',
                                     height: 70,
                                     fit: BoxFit.contain,
-                                    errorBuilder: (_, __, ___) => const SizedBox(),
+                                    errorBuilder: (_, __, ___) =>
+                                        const SizedBox(),
                                   ),
                                 ),
-                                // جسم السبحة
                                 Positioned(
                                   top: 42,
                                   child: Image.asset(
@@ -156,7 +144,10 @@ class _SebhaScreenState extends State<SebhaScreen> {
                                       height: 250,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        border: Border.all(color: AppColors.gold, width: 4),
+                                        border: Border.all(
+                                          color: AppColors.gold,
+                                          width: 4,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -166,7 +157,6 @@ class _SebhaScreenState extends State<SebhaScreen> {
                           ),
                         ),
 
-                        // الذكر والعداد في المنتصف
                         Positioned(
                           top: 150,
                           child: Column(

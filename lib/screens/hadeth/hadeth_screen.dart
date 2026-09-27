@@ -14,7 +14,7 @@ class HadethScreen extends StatefulWidget {
 class _HadethScreenState extends State<HadethScreen> {
   List<HadethModel> _ahadeth = [];
   late PageController _pageController;
-  int _activePage = 5000; // صفحة البداية للـ Infinite Scroll
+  int _activePage = 5000; 
 
   @override
   void initState() {
@@ -69,7 +69,6 @@ class _HadethScreenState extends State<HadethScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // 1. صورة خلفية الشاشة الكاملة hadethbg.png
           Image.asset(
             'assets/images/hadethbg.png',
             width: double.infinity,
@@ -82,18 +81,15 @@ class _HadethScreenState extends State<HadethScreen> {
             ),
           ),
 
-          // 2. طبقة تعتيم خفيفة
           Container(
             color: Colors.black.withOpacity(0.3),
           ),
 
-          // 3. المحتوى
           SafeArea(
             child: Column(
               children: [
                 const SizedBox(height: 10),
 
-                // هيدر المسجد وشعار Islami
                 SizedBox(
                   height: 130,
                   width: double.infinity,
@@ -124,11 +120,10 @@ class _HadethScreenState extends State<HadethScreen> {
 
                 const SizedBox(height: 12),
 
-                // كروت الأحاديث الدائرية اللانهائية
                 Expanded(
                   child: PageView.builder(
                     controller: _pageController,
-                    itemCount: 100000, // عدد كبير جداً ليسمح بالدوران اللانهائي
+                    itemCount: 100000, 
                     onPageChanged: (pageIndex) {
                       setState(() {
                         _activePage = pageIndex;
@@ -142,7 +137,7 @@ class _HadethScreenState extends State<HadethScreen> {
                       return AnimatedScale(
                         duration: const Duration(milliseconds: 250),
                         curve: Curves.easeOut,
-                        scale: isSelected ? 1.0 : 0.88, // الكارت اللي في النص أكبر من اللي جنبه
+                        scale: isSelected ? 1.0 : 0.88, 
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -162,7 +157,6 @@ class _HadethScreenState extends State<HadethScreen> {
                               borderRadius: BorderRadius.circular(24),
                               child: Stack(
                                 children: [
-                                  // خلفية الكارت المصغرة في المنتصف
                                   Center(
                                     child: Opacity(
                                       opacity: 0.28,
@@ -176,7 +170,6 @@ class _HadethScreenState extends State<HadethScreen> {
                                     ),
                                   ),
 
-                                  // المساجد أسفل الكارت
                                   Positioned(
                                     left: 0,
                                     right: 0,
@@ -188,13 +181,11 @@ class _HadethScreenState extends State<HadethScreen> {
                                     ),
                                   ),
 
-                                  // نصوص الحديث
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
                                     child: Column(
                                       children: [
                                         const SizedBox(height: 18),
-                                        // عنوان الحديث
                                         Padding(
                                           padding: const EdgeInsets.symmetric(horizontal: 45.0),
                                           child: Text(
@@ -210,7 +201,6 @@ class _HadethScreenState extends State<HadethScreen> {
                                         ),
                                         const SizedBox(height: 14),
 
-                                        // نص الحديث القابل للتمرير
                                         Expanded(
                                           child: SingleChildScrollView(
                                             physics: const BouncingScrollPhysics(),
@@ -233,7 +223,6 @@ class _HadethScreenState extends State<HadethScreen> {
                                     ),
                                   ),
 
-                                  // الكورنر الأيسر بأبعاد فيجما 93x100
                                   Positioned(
                                     top: 10,
                                     left: 8,
@@ -246,7 +235,6 @@ class _HadethScreenState extends State<HadethScreen> {
                                     ),
                                   ),
 
-                                  // الكورنر الأيمن بأبعاد فيجما 93x100
                                   Positioned(
                                     top: 10,
                                     right: 8,

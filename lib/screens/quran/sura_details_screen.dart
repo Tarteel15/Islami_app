@@ -25,7 +25,6 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   Future<void> _loadSuraVerses() async {
     String content = '';
     
-    // مطابقة رقم الملف برقم السورة مباشرة: الفاتحة = 1.txt
     List<String> pathsToTry = [
       'assets/suras/${widget.sura.index}.txt',
       'assets/suras/${widget.sura.index.toString().padLeft(3, '0')}.txt',
@@ -114,7 +113,6 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
                     children: [
-                      // الكورنرز في أقصى اليمين واليسار بالأعلى، واسم السورة في المنتصف تماماً
                       SizedBox(
                         height: 90,
                         width: double.infinity,

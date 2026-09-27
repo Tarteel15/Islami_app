@@ -20,7 +20,6 @@ class BgWrapper extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // الخلفية: إما صورة مخصصة (مثل timebg.png) أو التدرج الطبيعي للمشروع
           if (backgroundImage != null)
             Image.asset(
               backgroundImage!,
@@ -38,7 +37,6 @@ class BgWrapper extends StatelessWidget {
               ),
             ),
 
-          // صورة قبة المسجد العلوية
           Positioned(
             top: 0,
             left: 0,
@@ -54,7 +52,6 @@ class BgWrapper extends StatelessWidget {
             ),
           ),
 
-          // المحتوى مع SafeArea والهيدر
           SafeArea(
             child: Column(
               children: [

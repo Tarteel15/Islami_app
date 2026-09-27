@@ -23,7 +23,6 @@ class _QuranScreenState extends State<QuranScreen> {
   }
 
   void _initRecents() {
-    // تعيين سور افتراضية فوراً في البداية حتى لا يكون المكان فارغاً نهائياً
     _recentSuras = [
       _allSuras[20], // Al-Anbiya
       _allSuras[0],  // Al-Fatiha
@@ -58,7 +57,6 @@ class _QuranScreenState extends State<QuranScreen> {
   }
 
   Future<void> _addSuraToRecent(SuraModel sura) async {
-    // تحديث الواجهة فوراً في الـ State
     setState(() {
       _recentSuras.removeWhere((item) => item.index == sura.index);
       _recentSuras.insert(0, sura);
@@ -67,7 +65,6 @@ class _QuranScreenState extends State<QuranScreen> {
       }
     });
 
-    // حفظ في الـ SharedPreferences
     try {
       final prefs = await SharedPreferences.getInstance();
       List<String> indices = _recentSuras.map((s) => '${s.index}').toList();
@@ -87,15 +84,11 @@ class _QuranScreenState extends State<QuranScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // تصفية السور حسب نص البحث
     List<SuraModel> filteredSuras = _allSuras.where((sura) {
       return sura.arabicName.contains(_searchQuery.trim()) ||
           sura.englishName.toLowerCase().contains(_searchQuery.trim().toLowerCase());
     }).toList();
 
-    // السور المعروضة في قسم الـ Most Recently:
-    // إذا كان المستخدم يبحث -> نعرض نتائج البحث ككروت بالأعلى كما في فيجما
-    // إذا لم يكن يبحث -> نعرض السور التي زارها مؤخراً
     List<SuraModel> displayedRecent = _searchQuery.trim().isNotEmpty
         ? filteredSuras
         : _recentSuras;
@@ -103,7 +96,6 @@ class _QuranScreenState extends State<QuranScreen> {
     return Stack(
       fit: StackFit.expand,
       children: [
-        // 1. الخلفية
         Image.asset(
           'assets/images/homebg.png',
           width: double.infinity,
@@ -116,18 +108,15 @@ class _QuranScreenState extends State<QuranScreen> {
           ),
         ),
 
-        // 2. طبقة التعتيم
         Container(
           color: Colors.black.withOpacity(0.35),
         ),
 
-        // 3. المحتوى
         SafeArea(
           child: Column(
             children: [
               const SizedBox(height: 8),
 
-              // هيدر المسجد وكلمة Islami
               SizedBox(
                 height: 120,
                 width: double.infinity,
@@ -164,7 +153,6 @@ class _QuranScreenState extends State<QuranScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // مربع البحث
                       TextField(
                         onChanged: (val) {
                           setState(() {
@@ -196,7 +184,6 @@ class _QuranScreenState extends State<QuranScreen> {
 
                       const SizedBox(height: 12),
 
-                      // قسم Most Recently يظهر دائماً ولا يختفي
                       if (displayedRecent.isNotEmpty) ...[
                         const Text(
                           'Most Recently',
@@ -234,7 +221,6 @@ class _QuranScreenState extends State<QuranScreen> {
                       ),
                       const SizedBox(height: 6),
 
-                      // قائمة السور
                       Expanded(
                         child: filteredSuras.isEmpty
                             ? const Center(
@@ -264,7 +250,6 @@ class _QuranScreenState extends State<QuranScreen> {
                                       padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
                                       child: Row(
                                         children: [
-                                          // رقم السورة داخل suranum.png
                                           SizedBox(
                                             width: 44,
                                             height: 44,
@@ -296,7 +281,6 @@ class _QuranScreenState extends State<QuranScreen> {
                                           ),
                                           const SizedBox(width: 14),
 
-                                          // اسم السورة بالإنجليزية وعدد الآيات
                                           Expanded(
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -324,7 +308,6 @@ class _QuranScreenState extends State<QuranScreen> {
                                             ),
                                           ),
 
-                                          // اسم السورة بالعربية
                                           Text(
                                             sura.arabicName,
                                             style: const TextStyle(

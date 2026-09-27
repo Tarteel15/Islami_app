@@ -37,7 +37,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // 1. أيقونة القرآن (quran.png)
             _buildCustomNavItem(
               imagePath: 'assets/images/quran.png',
               label: 'Quran',
@@ -45,7 +44,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
               fallbackIcon: Icons.menu_book_rounded,
             ),
 
-            // 2. أيقونة الحديث (book-album-svgrepo-com 1.png)
             _buildCustomNavItem(
               imagePath: 'assets/images/book-album-svgrepo-com 1.png',
               label: 'Hadith',
@@ -53,7 +51,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
               fallbackIcon: Icons.book_outlined,
             ),
 
-            // 3. أيقونة السبحة (necklace-islam-svgrepo-com 1.png)
             _buildCustomNavItem(
               imagePath: 'assets/images/necklace-islam-svgrepo-com 1.png',
               label: 'Sebha',
@@ -61,7 +58,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
               fallbackIcon: Icons.fingerprint,
             ),
 
-            // 4. أيقونة الراديو (radio-svgrepo-com 1.png)
             _buildCustomNavItem(
               imagePath: 'assets/images/radio-svgrepo-com 1.png',
               label: 'Radio',
@@ -69,7 +65,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
               fallbackIcon: Icons.radio,
             ),
 
-            // 5. أيقونة التايم (Vector.png)
             _buildCustomNavItem(
               imagePath: 'assets/images/Vector.png',
               label: 'Time',
@@ -82,7 +77,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
     );
   }
 
-  // بناء عنصر البوتم بار التفاعلي مع تأثير الكبسولة الداكنة عند التحديد
   Widget _buildCustomNavItem({
     required String imagePath,
     required String label,

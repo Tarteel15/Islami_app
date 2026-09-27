@@ -36,7 +36,6 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             children: [
               const Spacer(),
-              // اللوجو بالمقاسات المحددة بالضبط 343x343
               Center(
                 child: Image.asset(
                   'assets/images/ic_splash.png',
@@ -46,7 +45,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               const Spacer(),
-              // صورة البراندينج في الأسفل
               Padding(
                 padding: const EdgeInsets.only(bottom: 24.0),
                 child: Image.asset(

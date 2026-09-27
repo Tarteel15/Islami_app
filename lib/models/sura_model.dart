@@ -54,7 +54,7 @@ class SuraModel {
     List<SuraModel> list = [];
     for (int i = 0; i < 114; i++) {
       list.add(SuraModel(
-        index: i + 1, // يبدأ من 1 بالضبط
+        index: i + 1, 
         arabicName: arabicNames[i],
         englishName: englishNames[i],
         versesCount: '${ayaNumber[i]} Verses',
